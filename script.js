@@ -24,4 +24,11 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+const glow = document.querySelector('.cursor-glow');
+window.addEventListener('pointermove', (event) => {
+  if (!glow) return;
+  glow.style.left = `${event.clientX}px`;
+  glow.style.top = `${event.clientY}px`;
+});
+
 document.getElementById('year').textContent = new Date().getFullYear();
